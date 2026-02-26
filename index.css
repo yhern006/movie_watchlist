@@ -1,0 +1,27 @@
+html, body {
+    background-color: #121212;
+    color: white;
+    font-family:"Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0;
+}
+
+.hero {
+    background-image: url('/hero_img.png');
+    background-size: cover;
+    padding: 44px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    font-size: 42.8px;
+}
+
+h2 {
+    font-size: 14px;
+}
