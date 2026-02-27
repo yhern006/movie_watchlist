@@ -26,6 +26,10 @@ h2 {
     font-size: 14px;
 }
 
+h3 {
+    font-size: 18px;
+}
+
 .search {
     height: 38px;
     text-align: center;
@@ -72,4 +76,14 @@ h2 {
     margin: auto 2px auto 12px;
     position: absolute;
     font-size: 1rem;
+}
+
+.watchlist {
+    color: #2E2E2F;
+    margin: 240px;
+    text-align: center;
+}
+
+.watchlist i {
+    font-size: 70px;
 }
