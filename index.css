@@ -30,7 +30,7 @@ h3 {
     font-size: 18px;
 }
 
-.search {
+#search-form {
     height: 38px;
     text-align: center;
     margin-top: -20px;
@@ -67,7 +67,7 @@ h3 {
     height: inherit;
 }
 
-.search i {
+#search-form i {
     color: #9ca3af;
     background-color: #2E2E2F;
     height: 16px;

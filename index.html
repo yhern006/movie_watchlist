@@ -16,11 +16,13 @@
             <h2>My Watchlist</h2>
         </header>
         <main>
-            <form class="search">
+            <form id="search-form" role="search">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <input type="search"
                     placeholder="Blade Runner"
-                    id="search-input" />
+                    id="search-input"
+                    name="q"
+                    required />
                 <button type="submit"
                     id="search-btn">Search</button>
             </form>
