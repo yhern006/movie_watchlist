@@ -25,3 +25,51 @@ h1 {
 h2 {
     font-size: 14px;
 }
+
+.search {
+    height: 38px;
+    text-align: center;
+    margin-top: -20px;
+    position: relative;
+    font-size: 0;  /*to get rid of whitespace before button*/
+}
+
+#search-input,
+#search-btn {
+    border: none;
+    margin: 0;
+}
+
+#search-input {
+    background-color: #2E2E2F;
+    border-radius: 6px 0 0 6px;
+    height: inherit;
+    padding: 9px 30px 9px 41px;
+    width: 462px;
+    color: #A5A5A5;
+}
+
+#search-input::placeholder {
+    color: #A5A5A5;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#search-btn {
+    background-color: #4B4B4B;
+    color: white;
+    padding: 9px 32px;
+    border-radius: 0 6px 6px 0;
+    height: inherit;
+}
+
+.search i {
+    color: #9ca3af;
+    background-color: #2E2E2F;
+    height: 16px;
+    top: 0;
+    bottom: 0;
+    margin: auto 2px auto 12px;
+    position: absolute;
+    font-size: 1rem;
+}

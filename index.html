@@ -7,6 +7,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" 
             rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
@@ -15,7 +16,14 @@
             <h2>My Watchlist</h2>
         </header>
         <main>
-
+            <form class="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search"
+                    placeholder="Blade Runner"
+                    id="search-input" />
+                <button type="submit"
+                    id="search-btn">Search</button>
+            </form>
         </main>
     </body>
     <script src="index.js"></script>
