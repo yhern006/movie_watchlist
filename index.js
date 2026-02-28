@@ -1,18 +1,42 @@
-
 const searchForm = document.getElementById('search-form')
 const searchInput = document.getElementById('search-input')
+const watchlistSection = document.getElementById('watchlist')
+let dataArray = []
+let tempFilmIds = []
 
 searchForm.addEventListener('submit', searchFilm)
 
-function searchFilm(e) {
+async function searchFilm(e) {
     e.preventDefault()
-    console.log('clicked')
     const filmTitle = searchInput.value
-    console.log(filmTitle)
     
-    fetch(`http://www.omdbapi.com/?apikey=769e31a9&t=${filmTitle}`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-     })
+    const response = await fetch(`http://www.omdbapi.com/?apikey=769e31a9&s=${filmTitle}&type=movie`)
+    const data =  await response.json()
+    dataArray = data.Search
+    console.log(dataArray)
+    tempFilmIds = dataArray.map(film => film.imdbID)
+    console.log(tempFilmIds)
+
+    getFilmResultsInfo(tempFilmIds)
 }
+
+async function getFilmResultsInfo(filmIdsArray) {
+    let filmResultsInfoArray = []
+    for(let filmId of filmIdsArray) {
+        const response = await(fetch(`http://www.omdbapi.com/?apikey=769e31a9&i=${filmId}`))
+        const data = await response.json()
+        
+        filmResultsInfoArray.push(data)
+    }
+    
+}
+
+// function displayResults(resultsArray) {
+//     let watchlist_html = ""
+
+//     let combinedResults = resultsArray.map(result => {
+//         return `
+        
+//         `
+//     })    
+// }

@@ -78,12 +78,12 @@ h3 {
     font-size: 1rem;
 }
 
-.watchlist {
+#watchlist {
     color: #2E2E2F;
     margin: 240px;
     text-align: center;
 }
 
-.watchlist i {
+#watchlist i {
     font-size: 70px;
 }
