@@ -53,12 +53,12 @@ async function getFilmResultsInfo(filmIdsArray) {
                 <div class='film-details'>
                     <div class='film-title-rating'>
                         <h3 class='film-title'>${result.Title}</h3>
-                        <p class='film-rating'>⭐${result.imdbRating}</p>
+                        <p class='film-rating'><span class='star-icon'>⭐</span>${result.imdbRating}</p>
                     </div>
                     <ul class='film-info'>
                         <li>${result.Runtime}</li>
                         <li>${result.Genre}</li>
-                        <li><i class="fa-solid fa-circle-plus"></i>Watchlist</li>
+                        <li class='plus-watchlist'><i class="fa-solid fa-circle-plus"></i>Watchlist</li>
                     </ul>
                     <p class='film-plot'>${result.Plot}</p>
                 </div>

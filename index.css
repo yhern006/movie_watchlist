@@ -91,7 +91,7 @@ h3 {
 }
 
 #watchlist.foundFilms {
-    margin: 10px;
+    margin: 21px 44px;
 }
 
 #watchlist.foundFilms i {
@@ -114,11 +114,54 @@ h3 {
 
 .film,
 .film-title-rating,
-.film-info {
+.film-info,
+.plus-watchlist {
     display: flex;
     flex-direction: row;
 }
 
+.film-title-rating {
+    align-items: center;
+}
+
+.film-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 15px 4px 11px 0;
+}
+
+.star-icon {
+    margin-right: 4px;
+    font-size: 15px;
+}
+
+.film-rating {
+    font-size: 12px;
+    font-weight: 400;
+}
+
 .film-poster {
+    background-size: cover;
     width: 99px;
+    height: 148px;
+    justify-content: center;
+}
+
+.film-info {
+    gap: 0 19px;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.film-info li i {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.film-plot {
+    text-align: left;
+    color: #a5a5a5;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
 }
