@@ -9,8 +9,6 @@ function searchFilm(e) {
     fetchFilms(searchInput.value)
         .then(data => getFilmResultsInfo(data))
         .then(results => {
-            console.log(':)')
-            console.log(results)
             displayResults(results)
         })
 }
@@ -27,7 +25,6 @@ async function fetchFilms(filmTitle) {
         tempFilmIds = dataArray.map(film => film.imdbID)
         console.log(tempFilmIds)
         return tempFilmIds
-        //const filmResultsInfoArray = await getFilmResultsInfo(tempFilmIds)
     } catch(err){
         console.log(`ERROR: ${err}`)
     }
@@ -38,10 +35,10 @@ async function getFilmResultsInfo(filmIdsArray) {
     for (let filmId of filmIdsArray) {
         const response = await fetch(`http://www.omdbapi.com/?apikey=769e31a9&i=${filmId}`)
         const data = await response.json()
-        console.log('inside loop')
+        
         filmResultsInfoArray.push(data)
     }
-    console.log('here...')
+    
     return filmResultsInfoArray
 }
 
@@ -49,7 +46,8 @@ async function getFilmResultsInfo(filmIdsArray) {
     let combinedResults = resultsArray.map(result => {
         return `
             <li class='film'>
-                <img class='film-poster' src=${result.Poster}/>
+                <img class='film-poster' src=${result.Poster}
+                    alt='Poster for ${result.Title}'/>
                 <div class='film-details'>
                     <div class='film-title-rating'>
                         <h3 class='film-title'>${result.Title}</h3>
@@ -65,7 +63,7 @@ async function getFilmResultsInfo(filmIdsArray) {
             </li>
         `
     }).join("")
-    console.log(combinedResults)
+
     watchlistSection.innerHTML = `<ul>
                                     ${combinedResults}
                                 </ul>`

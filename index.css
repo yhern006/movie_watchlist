@@ -92,6 +92,7 @@ h3 {
 
 #watchlist.foundFilms {
     margin: 12px 44px;
+    text-align: left;
 }
 
 #watchlist.foundFilms i {
@@ -142,10 +143,9 @@ h3 {
 }
 
 .film-poster {
-    background-size: cover;
     width: 99px;
-    height: 148px;
-    justify-content: center;
+    height: auto;
+    flex-shrink: 0;
 }
 
 .film-info {
