@@ -91,7 +91,7 @@ h3 {
 }
 
 #watchlist.foundFilms {
-    margin: 21px 44px;
+    margin: 12px 44px;
 }
 
 #watchlist.foundFilms i {
@@ -108,7 +108,7 @@ h3 {
 
 .film {
     border-bottom: 1.5px solid #2c2c2c;
-    padding: 10px 0px;
+    padding: 24px 0px;
     gap: 0 21px;
 }
 
@@ -122,17 +122,18 @@ h3 {
 
 .film-title-rating {
     align-items: center;
+    text-align: left;
 }
 
 .film-title {
     font-size: 18px;
     font-weight: 500;
-    margin: 15px 4px 11px 0;
+    margin: 11px 4px 11px 0;
 }
 
 .star-icon {
     margin-right: 4px;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .film-rating {
