@@ -28,12 +28,24 @@ h1 {
     font-size: 42.8px;
 }
 
-h2 {
+h2,
+a.empty-user-watchlist,
+.star-icon,
+.film-plot,
+#search-input::placeholder {
     font-size: 14px;
 }
 
-h3 {
+h3,
+#user-watchlist i,
+.film-title {
     font-size: 18px;
+}
+
+#search-form i,
+#watchlist.foundFilms i,
+.film-info li i {
+    font-size: 1rem;
 }
 
 #search-form {
@@ -61,7 +73,6 @@ h3 {
 
 #search-input::placeholder {
     color: #A5A5A5;
-    font-size: 14px;
     font-weight: 500;
 }
 
@@ -95,7 +106,6 @@ h3 {
     bottom: 0;
     margin: auto 2px auto 12px;
     position: absolute;
-    font-size: 1rem;
 }
 
 #watchlist {
@@ -107,10 +117,6 @@ h3 {
 #watchlist.foundFilms {
     margin: 12px 44px;
     text-align: left;
-}
-
-#watchlist.foundFilms i {
-    font-size: 16px;
 }
 
 #watchlist i {
@@ -131,22 +137,20 @@ h3 {
     margin: 0 15px 15px;
 }
 
-#user-watchlist p,
-#user-watchlist i {
-    color: white;
-}
-
-#user-watchlist i {
-    font-size: 18px;
-}
-
-.empty-user-watchlist {
+a.empty-user-watchlist {
     justify-content: center;
     align-items: center;
     gap: 7px;
-    font-size: 14px;
+    margin: 0 30vw;
+    color: white;
     font-weight: 600;
     letter-spacing: 0.2px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.empty-user-watchlist:hover {
+    color: #9ca3af;
 }
 
 .empty-user-watchlist p {
@@ -174,14 +178,12 @@ h3 {
 }
 
 .film-title {
-    font-size: 18px;
     font-weight: 500;
     margin: 11px 4px 11px 0;
 }
 
 .star-icon {
     margin-right: 4px;
-    font-size: 14px;
 }
 
 .film-rating {
@@ -202,14 +204,12 @@ h3 {
 }
 
 .film-info li i {
-    font-size: 16px;
     margin-right: 5px;
 }
 
 .film-plot {
     text-align: left;
     color: #a5a5a5;
-    font-size: 14px;
     font-weight: 400;
     line-height: 20px;
 }
