@@ -1,8 +1,19 @@
 const searchForm = document.getElementById('search-form')
 const searchInput = document.getElementById('search-input')
 const watchlistSection = document.getElementById('watchlist')
+const userWatchlist = []
 
 searchForm.addEventListener('submit', searchFilm)
+watchlistSection.addEventListener('click', addToWatchlist)
+
+function addToWatchlist(e) {
+    const filmId = e.target.dataset.add
+    if(filmId && !userWatchlist.includes(filmId)) {
+        userWatchlist.push(filmId)
+        console.log('Film Added!')
+        console.log(userWatchlist)
+    }
+}
 
 function searchFilm(e) {
     e.preventDefault()
@@ -21,7 +32,7 @@ async function fetchFilms(filmTitle) {
         const response = await fetch(`http://www.omdbapi.com/?apikey=769e31a9&s=${filmTitle}&type=movie`)
         const data =  await response.json()
         dataArray = data.Search
-        console.log(dataArray)
+        
         tempFilmIds = dataArray.map(film => film.imdbID)
         console.log(tempFilmIds)
         return tempFilmIds
@@ -45,7 +56,7 @@ async function getFilmResultsInfo(filmIdsArray) {
  function displayResults(resultsArray) {
     let combinedResults = resultsArray.map(result => {
         return `
-            <li class='film'>
+            <li class='film' id='${result.imdbID}'>
                 <img class='film-poster' src=${result.Poster}
                     alt='Poster for ${result.Title}'/>
                 <div class='film-details'>
@@ -56,7 +67,10 @@ async function getFilmResultsInfo(filmIdsArray) {
                     <ul class='film-info'>
                         <li>${result.Runtime}</li>
                         <li>${result.Genre}</li>
-                        <li class='plus-watchlist'><i class="fa-solid fa-circle-plus"></i>Watchlist</li>
+                        <li class='plus-watchlist' data-add='${result.imdbID}'>
+                            <i class="fa-solid fa-circle-plus"
+                                data-add='${result.imdbID}'></i>Watchlist
+                        </li>
                     </ul>
                     <p class='film-plot'>${result.Plot}</p>
                 </div>

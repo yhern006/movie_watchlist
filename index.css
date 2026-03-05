@@ -65,12 +65,27 @@ h3 {
     font-weight: 500;
 }
 
+#search-input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px rgb(131, 96, 0) inset;
+    -webkit-text-fill-color: whitesmoke;
+}
+
+
 #search-btn {
     background-color: #4B4B4B;
     color: white;
     padding: 9px 32px;
     border-radius: 0 6px 6px 0;
     height: inherit;
+}
+
+#search-btn:hover,
+#search-btn:focus {
+    background-color: #adadad;
+}
+
+#search-btn:active {
+    background-color: #242424;
 }
 
 #search-form i {
