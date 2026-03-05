@@ -70,7 +70,6 @@ h3 {
     -webkit-text-fill-color: whitesmoke;
 }
 
-
 #search-btn {
     background-color: #4B4B4B;
     color: white;
@@ -122,6 +121,38 @@ h3 {
     color: white;
 }
 
+#user-watchlist {
+    color: #787878;
+    text-align: center;
+    margin: 25vh 0;
+}
+
+#user-watchlist h3 {
+    margin: 0 15px 15px;
+}
+
+#user-watchlist p,
+#user-watchlist i {
+    color: white;
+}
+
+#user-watchlist i {
+    font-size: 18px;
+}
+
+.empty-user-watchlist {
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+.empty-user-watchlist p {
+    margin: 0;
+}
+
 .film {
     border-bottom: 1.5px solid #2c2c2c;
     padding: 24px 0px;
@@ -131,7 +162,8 @@ h3 {
 .film,
 .film-title-rating,
 .film-info,
-.plus-watchlist {
+.plus-watchlist,
+.empty-user-watchlist{
     display: flex;
     flex-direction: row;
 }
