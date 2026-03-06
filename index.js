@@ -1,7 +1,12 @@
 const searchForm = document.getElementById('search-form')
 const searchInput = document.getElementById('search-input')
 const watchlistSection = document.getElementById('watchlist')
-const userWatchlist = []
+let userWatchlist = []
+const watchlistLocalStorage = JSON.parse(localStorage.getItem('myWatchlist'))
+
+if(watchlistLocalStorage){
+    userWatchlist = watchlistLocalStorage
+}
 
 searchForm.addEventListener('submit', searchFilm)
 watchlistSection.addEventListener('click', addToWatchlist)
@@ -10,6 +15,7 @@ function addToWatchlist(e) {
     const filmId = e.target.dataset.add
     if(filmId && !userWatchlist.includes(filmId)) {
         userWatchlist.push(filmId)
+        localStorage.setItem('myWatchlist', JSON.stringify(userWatchlist))
         console.log('Film Added!')
         console.log(userWatchlist)
     }

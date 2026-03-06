@@ -142,19 +142,24 @@ a.empty-user-watchlist {
     align-items: center;
     gap: 7px;
     margin: 0 30vw;
-    color: white;
     font-weight: 600;
     letter-spacing: 0.2px;
-    text-decoration: none;
     cursor: pointer;
 }
 
-a.empty-user-watchlist:hover {
+a.empty-user-watchlist:hover,
+a.my-watchlist-link:hover {
     color: #9ca3af;
 }
 
 .empty-user-watchlist p {
     margin: 0;
+}
+
+a.empty-user-watchlist,
+a.my-watchlist-link {
+    color: white;
+    text-decoration: none;
 }
 
 .film {
@@ -170,6 +175,10 @@ a.empty-user-watchlist:hover {
 .empty-user-watchlist{
     display: flex;
     flex-direction: row;
+}
+
+.plus-watchlist {
+    cursor: pointer;
 }
 
 .film-title-rating {
