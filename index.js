@@ -3,26 +3,50 @@ const searchInput = document.getElementById('search-input')
 const watchlistSection = document.getElementById('watchlist')
 let userWatchlist = []
 const watchlistLocalStorage = JSON.parse(localStorage.getItem('myWatchlist'))
+console.log(watchlistLocalStorage)
 
 if(watchlistLocalStorage){
     userWatchlist = watchlistLocalStorage
 }
 
 searchForm.addEventListener('submit', searchFilm)
-watchlistSection.addEventListener('click', addToWatchlist)
+watchlistSection.addEventListener('click', watchlistClicked)
 
-function addToWatchlist(e) {
+function watchlistClicked(e) {
     const filmId = e.target.dataset.add
-    if(filmId && !userWatchlist.includes(filmId)) {
-        userWatchlist.push(filmId)
-        localStorage.setItem('myWatchlist', JSON.stringify(userWatchlist))
-        console.log('Film Added!')
+    console.log(e.target)
+    if(filmId) {
+        if(userWatchlist.includes(filmId)) {
+            removeFromWatchlist(filmId)
+        }
+        else {
+            addToWatchlist(filmId)
+        }
+        const liEl = e.target
+        liEl.innerHTML = addCircleIcon(filmId)
         console.log(userWatchlist)
     }
 }
 
+function addToWatchlist(filmId) {
+    userWatchlist.push(filmId)
+    localStorage.setItem('myWatchlist', JSON.stringify(userWatchlist))
+    console.log('Film Added!')
+    //console.log(this.querySelector(`li[data-add=${filmId}]`))
+    //const liEl = this.querySelector(`li[data-add=${filmId}]`)
+    //liEl.innerHTML = addCircleIcon(filmId)
+}
+
+function removeFromWatchlist(filmId) {
+    const index = userWatchlist.indexOf(filmId)
+    userWatchlist.splice(index, 1)
+    console.log('Removed Film!')
+    localStorage.setItem('myWatchlist', JSON.stringify(userWatchlist))
+}
+
 function searchFilm(e) {
     e.preventDefault()
+    console.log('clicked')
     fetchFilms(searchInput.value)
         .then(data => getFilmResultsInfo(data))
         .then(results => {
@@ -59,7 +83,19 @@ async function getFilmResultsInfo(filmIdsArray) {
     return filmResultsInfoArray
 }
 
+function addCircleIcon(filmId) {
+    if(userWatchlist.includes(filmId)) {
+        return `<i class="fa-solid fa-circle-minus"
+                    data-add='${filmId}'></i>Remove`
+    }
+    else {
+        return `<i class="fa-solid fa-circle-plus"
+                    data-add='${filmId}'></i>Watchlist`
+    }
+}
+
  function displayResults(resultsArray) {
+    console.log('...')
     let combinedResults = resultsArray.map(result => {
         return `
             <li class='film' id='${result.imdbID}'>
@@ -74,8 +110,7 @@ async function getFilmResultsInfo(filmIdsArray) {
                         <li>${result.Runtime}</li>
                         <li>${result.Genre}</li>
                         <li class='plus-watchlist' data-add='${result.imdbID}'>
-                            <i class="fa-solid fa-circle-plus"
-                                data-add='${result.imdbID}'></i>Watchlist
+                            ${addCircleIcon(result.imdbID)}
                         </li>
                     </ul>
                     <p class='film-plot'>${result.Plot}</p>
