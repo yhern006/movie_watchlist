@@ -1,8 +1,10 @@
+import { getFromStorage, displayResults, addCircleIcon } from "./display.js"
+
 const searchForm = document.getElementById('search-form')
 const searchInput = document.getElementById('search-input')
 const watchlistSection = document.getElementById('watchlist')
 let userWatchlist = []
-const watchlistLocalStorage = JSON.parse(localStorage.getItem('myWatchlist'))
+const watchlistLocalStorage = getFromStorage()
 console.log(watchlistLocalStorage)
 
 if(watchlistLocalStorage){
@@ -24,7 +26,6 @@ function watchlistClicked(e) {
         }
         const liEl = e.target
         liEl.innerHTML = addCircleIcon(filmId)
-        console.log(userWatchlist)
     }
 }
 
@@ -32,9 +33,6 @@ function addToWatchlist(filmId) {
     userWatchlist.push(filmId)
     localStorage.setItem('myWatchlist', JSON.stringify(userWatchlist))
     console.log('Film Added!')
-    //console.log(this.querySelector(`li[data-add=${filmId}]`))
-    //const liEl = this.querySelector(`li[data-add=${filmId}]`)
-    //liEl.innerHTML = addCircleIcon(filmId)
 }
 
 function removeFromWatchlist(filmId) {
@@ -50,7 +48,15 @@ function searchFilm(e) {
     fetchFilms(searchInput.value)
         .then(data => getFilmResultsInfo(data))
         .then(results => {
-            displayResults(results)
+            console.log('displaying...')
+            console.log(results)
+            const display_html = displayResults(results)
+
+            watchlistSection.innerHTML = 
+                `<ul>
+                    ${display_html}
+                </ul>`
+            watchlistSection.classList.add('foundFilms')
         })
 }
 
@@ -82,45 +88,3 @@ async function getFilmResultsInfo(filmIdsArray) {
     
     return filmResultsInfoArray
 }
-
-function addCircleIcon(filmId) {
-    if(userWatchlist.includes(filmId)) {
-        return `<i class="fa-solid fa-circle-minus"
-                    data-add='${filmId}'></i>Remove`
-    }
-    else {
-        return `<i class="fa-solid fa-circle-plus"
-                    data-add='${filmId}'></i>Watchlist`
-    }
-}
-
- function displayResults(resultsArray) {
-    console.log('...')
-    let combinedResults = resultsArray.map(result => {
-        return `
-            <li class='film' id='${result.imdbID}'>
-                <img class='film-poster' src=${result.Poster}
-                    alt='Poster for ${result.Title}'/>
-                <div class='film-details'>
-                    <div class='film-title-rating'>
-                        <h3 class='film-title'>${result.Title}</h3>
-                        <p class='film-rating'><span class='star-icon'>⭐</span>${result.imdbRating}</p>
-                    </div>
-                    <ul class='film-info'>
-                        <li>${result.Runtime}</li>
-                        <li>${result.Genre}</li>
-                        <li class='plus-watchlist' data-add='${result.imdbID}'>
-                            ${addCircleIcon(result.imdbID)}
-                        </li>
-                    </ul>
-                    <p class='film-plot'>${result.Plot}</p>
-                </div>
-            </li>
-        `
-    }).join("")
-
-    watchlistSection.innerHTML = `<ul>
-                                    ${combinedResults}
-                                </ul>`
-    watchlistSection.classList.add('foundFilms')
- }
