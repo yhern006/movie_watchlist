@@ -136,17 +136,22 @@ h3,
     /* color: #787878; */
     /* text-align: center; */
     /* margin: 25vh 0; */
+    margin: 150px 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 h3.empty-user-watchlist {
-    margin: 0 15px 15px;
+    color: #787878;
+    justify-content: center;
+    text-align: center;
 }
 
 a.empty-user-watchlist {
     justify-content: center;
     align-items: center;
     gap: 7px;
-    margin: 0 30vw;
+    margin: 0;
     font-weight: 600;
     letter-spacing: 0.2px;
     cursor: pointer;

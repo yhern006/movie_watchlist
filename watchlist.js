@@ -50,7 +50,12 @@ function loadEmptyWatchlist() {
             <i class="fa-solid fa-circle-plus"></i>
             <p>Let's add some movies!</p>
         </a>`
-    document.getElementById('user-watchlist').innerHTML = emptySection_html
+    
+    userWatchlistEl.innerHTML = emptySection_html
+    console.log(userWatchlistEl)
+    if(userWatchlistEl.classList.contains('foundFilms')) {
+        userWatchlistEl.classList.remove('foundFilms')
+    }
 }
 
 function updateDisplay() {
