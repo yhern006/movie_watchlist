@@ -1,8 +1,9 @@
-import { getFromStorage, displayResults, addCircleIcon } from "./display.js"
+import { getFromStorage, displayResults, watchlistClicked } 
+    from "./display.js"
 
 const searchForm = document.getElementById('search-form')
 const searchInput = document.getElementById('search-input')
-const watchlistSection = document.getElementById('watchlist')
+const searchListSection = document.getElementById('search-list')
 let userWatchlist = []
 const watchlistLocalStorage = getFromStorage()
 console.log(watchlistLocalStorage)
@@ -12,51 +13,21 @@ if(watchlistLocalStorage){
 }
 
 searchForm.addEventListener('submit', searchFilm)
-watchlistSection.addEventListener('click', watchlistClicked)
-
-function watchlistClicked(e) {
-    const filmId = e.target.dataset.add
-    console.log(e.target)
-    if(filmId) {
-        if(userWatchlist.includes(filmId)) {
-            removeFromWatchlist(filmId)
-        }
-        else {
-            addToWatchlist(filmId)
-        }
-        const liEl = e.target
-        liEl.innerHTML = addCircleIcon(filmId)
-    }
-}
-
-function addToWatchlist(filmId) {
-    userWatchlist.push(filmId)
-    localStorage.setItem('myWatchlist', JSON.stringify(userWatchlist))
-    console.log('Film Added!')
-}
-
-function removeFromWatchlist(filmId) {
-    const index = userWatchlist.indexOf(filmId)
-    userWatchlist.splice(index, 1)
-    console.log('Removed Film!')
-    localStorage.setItem('myWatchlist', JSON.stringify(userWatchlist))
-}
+searchListSection.addEventListener('click', watchlistClicked)
 
 function searchFilm(e) {
     e.preventDefault()
-    console.log('clicked')
     fetchFilms(searchInput.value)
         .then(data => getFilmResultsInfo(data))
         .then(results => {
-            console.log('displaying...')
             console.log(results)
             const display_html = displayResults(results)
 
-            watchlistSection.innerHTML = 
+            searchListSection.innerHTML = 
                 `<ul>
                     ${display_html}
                 </ul>`
-            watchlistSection.classList.add('foundFilms')
+            searchListSection.classList.add('foundFilms')
         })
 }
 
@@ -70,7 +41,6 @@ async function fetchFilms(filmTitle) {
         dataArray = data.Search
         
         tempFilmIds = dataArray.map(film => film.imdbID)
-        console.log(tempFilmIds)
         return tempFilmIds
     } catch(err){
         console.log(`ERROR: ${err}`)

@@ -40,3 +40,34 @@ export function addCircleIcon(filmId) {
                     data-add='${filmId}'></i>Watchlist`
     }
 }
+
+export function addToWatchlist(filmId) {
+    let watchlist = getFromStorage()
+    watchlist.push(filmId)
+    localStorage.setItem('myWatchlist', JSON.stringify(watchlist))
+    console.log('Film Added!')
+}
+
+export function removeFromWatchlist(filmId) {
+    let watchlist = getFromStorage()
+    const index = watchlist.indexOf(filmId)
+    watchlist.splice(index, 1)
+    console.log('Removed Film!')
+    localStorage.setItem('myWatchlist', JSON.stringify(watchlist))
+}
+
+export function watchlistClicked(e) {
+    const filmId = e.target.dataset.add
+    let userWatchlist = getFromStorage()
+    
+    if(filmId) {
+        if(userWatchlist.includes(filmId)) {
+            removeFromWatchlist(filmId)
+        }
+        else {
+            addToWatchlist(filmId)
+        }
+        const liEl = e.target
+        liEl.innerHTML = addCircleIcon(filmId)
+    }
+}

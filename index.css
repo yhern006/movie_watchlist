@@ -43,7 +43,7 @@ h3,
 }
 
 #search-form i,
-#watchlist.foundFilms i,
+#search-list.foundFilms i,
 .film-info li i {
     font-size: 1rem;
 }
@@ -108,32 +108,37 @@ h3,
     position: absolute;
 }
 
-#watchlist {
-    color: #2E2E2F;
+#search-list {
     margin: 240px;
     text-align: center;
 }
 
-#watchlist.foundFilms {
+.empty-search-list,
+.empty-user-watchlist {
+    color: #2E2E2F;
+}
+
+#search-list.foundFilms,
+#user-watchlist.foundFilms {
     margin: 12px 44px;
     text-align: left;
 }
 
-#watchlist i {
+#search-list i {
     font-size: 70px;
 }
 
-#watchlist li {
+#search-list li {
     color: white;
 }
 
 #user-watchlist {
-    color: #787878;
-    text-align: center;
-    margin: 25vh 0;
+    /* color: #787878; */
+    /* text-align: center; */
+    /* margin: 25vh 0; */
 }
 
-#user-watchlist h3 {
+h3.empty-user-watchlist {
     margin: 0 15px 15px;
 }
 
