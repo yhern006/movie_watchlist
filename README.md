@@ -1,6 +1,8 @@
 # Movie Watchlist
 
 ## About
+A movie watchlist where you can keep track of your favorite movies!
+
 Solo Project from Scrimba's APIs and Async JS course in the Full Stack Developer Path.
 
 This project is meant to get practice with the OMDb API, local storage, CSS and JavaScript.
